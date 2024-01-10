@@ -1,0 +1,5 @@
+--database=postgresql
+--skip-action-mailbox
+--skip-action-text
+--skip-jbuilder
+--css=tailwind
