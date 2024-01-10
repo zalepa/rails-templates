@@ -14,7 +14,7 @@ CODE
 
 # Create the homepage
 file 'app/views/pages/home.html.haml', <<-CODE
-  %h1 Homepage
+%h1 Homepage
 CODE
 
 # Install and configure Devise
@@ -23,25 +23,25 @@ environment "config.action_mailer.default_url_options = { host: 'localhost', por
 
 # Create header partial with login links
 file 'app/views/shared/_header.html.haml', <<-CODE
-  .p-2.flex.flex-row.bg-slate-100.justify-between.mb-2
-    %h1 Site
-    %ul.flex.flex-row
-      - if user_signed_in?
-        %li.px-2
-          = link_to 'Logout', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }
-      - else
-        %li.px-2
-          = link_to 'Login', new_user_session_path
-        %li.px-2
-          = link_to 'Register', new_user_registration_path
+.p-2.flex.flex-row.bg-slate-100.justify-between.mb-2
+  %h1 Site
+  %ul.flex.flex-row
+    - if user_signed_in?
+      %li.px-2
+        = link_to 'Logout', destroy_user_session_path, method: :delete, data: { turbo_method: :delete }
+    - else
+      %li.px-2
+        = link_to 'Login', new_user_session_path
+      %li.px-2
+        = link_to 'Register', new_user_registration_path
 CODE
 
 # Create a header and alert panel and insert into application layout
 layout_path = "app/views/layouts/application.html.erb"
 content_to_add = <<~HTML
-  \t\t<%= render 'shared/header' %>
-  \t\t<% if notice %><p class="notice"><%= notice %></p><% end %>
-  \t\t<% if alert %><p class="alert"><%= alert %></p><% end %>
+\t\t<%= render 'shared/header' %>
+\t\t<% if notice %><p class="notice"><%= notice %></p><% end %>
+\t\t<% if alert %><p class="alert"><%= alert %></p><% end %>
 HTML
 insert_into_file layout_path, content_to_add, after: "<body>\n"
 
